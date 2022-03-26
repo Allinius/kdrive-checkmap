@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/kdrive-checkmap/static/css/main.b698ffda.css",
+    "main.js": "/kdrive-checkmap/static/js/main.26153724.js",
+    "static/js/787.2d9bd9b8.chunk.js": "/kdrive-checkmap/static/js/787.2d9bd9b8.chunk.js",
+    "static/media/blankmap.jpg": "/kdrive-checkmap/static/media/blankmap.cca414c9cc228fa0f402.jpg",
+    "index.html": "/kdrive-checkmap/index.html",
+    "main.b698ffda.css.map": "/kdrive-checkmap/static/css/main.b698ffda.css.map",
+    "main.26153724.js.map": "/kdrive-checkmap/static/js/main.26153724.js.map",
+    "787.2d9bd9b8.chunk.js.map": "/kdrive-checkmap/static/js/787.2d9bd9b8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b698ffda.css",
+    "static/js/main.26153724.js"
+  ]
+}
