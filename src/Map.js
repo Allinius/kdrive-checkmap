@@ -1,23 +1,21 @@
 import { useState, useCallback } from 'react';
+
 import Race from './Race';
+import SettingsPanel from './SettingsPanel';
+
 import raceData from './races';
 
 function Map(props) {
     const [dragging, setDragging] = useState(false);
     const [offset, setOffset] = useState({x: 0, y: 0});
     const [zoom, setZoom] = useState(1);
-    const startDragging = useCallback(
-        () => {
-            setDragging(true)
-        },
-        []
-    );
-    const stopDragging = useCallback(
-        () => {
-            setDragging(false);
-        },
-        []
-    );
+    const [showNames, setShowNames] = useState(false);
+    const [showGates, setShowGates] = useState(false);
+    const [showStanding, setShowStanding] = useState(false);
+    const [showAffinity, setShowAffinity] = useState(false);
+
+    const startDragging = useCallback(() => setDragging(true),[]);
+    const stopDragging = useCallback(() => setDragging(false),[]);
     const handleMouseMove = useCallback(
         (event) => {
             if (dragging) {
@@ -33,7 +31,7 @@ function Map(props) {
     );
     const handleWheel = useCallback(
         (event) => {
-            const sensitivity = 0.005;
+            const sensitivity = 0.002;
             const minZoom = 0.5;
             const maxZoom = 3;
             const delta = -event.deltaY * sensitivity
@@ -52,13 +50,14 @@ function Map(props) {
             standing={r.standing}
             affinity={r.affinity}
             scale={1 / zoom}
+            {...{showNames, showGates, showStanding, showAffinity}}
         />
     );
     const mapStyle = {
         transform: `scale(${zoom}) translate(${offset.x}px, ${offset.y}px)`,
     }
     return (
-        <div 
+        <main 
             className="map-container"
             onMouseDown={startDragging}
             onMouseUp={stopDragging}
@@ -66,14 +65,21 @@ function Map(props) {
             onMouseMove={handleMouseMove}
             onWheel={handleWheel}
         >
-            <div 
-                className="map"
-                style={mapStyle}
-            >
-                {races}
-            </div>
-        </div>
-    )
+            <div className="map" style={mapStyle}> {races} </div>
+            <SettingsPanel
+                {
+                ...{showNames,
+                    showGates,
+                    showStanding,
+                    showAffinity,
+                    setShowNames,
+                    setShowGates,
+                    setShowStanding,
+                    setShowAffinity}
+                }
+            />
+        </main>
+    );
 }
 
 export default Map;

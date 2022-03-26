@@ -19,25 +19,30 @@ function Race(props) {
 
     return (
         <div className="race-container" style={styles}>
+            { (props.showNames || props.showGates || props.showStanding || props.showAffinity) &&
             <div className="race-info">
-                <h4>{props.name}</h4>
+                { props.showNames &&
+                <h4>{props.name}</h4> }
                 <table>
                     <tbody>
+                        { props.showGates &&
                         <tr>
                             <th>Gates</th>
                             <td>{props.gates}</td>
-                        </tr>
+                        </tr> }
+                        { props.showStanding &&
                         <tr>
                             <th>Standing</th>
                             <td>{props.standing}</td>
-                        </tr>
+                        </tr> }
+                        { props.showAffinity &&
                         <tr>
                             <th>Affinity</th>
                             <td>{props.affinity}</td>
-                        </tr>
+                        </tr> }
                     </tbody>
                 </table>
-            </div>
+            </div> }
             <div className={`race-icon${completed ? ' completed' : ''}`} onClick={handleClick}></div>
         </div>
     )
